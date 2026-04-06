@@ -1,0 +1,51 @@
+#!/bin/bash
+# claude-multi: Launch multiple Claude Code sessions in tmux windows
+# Usage: claude-multi [session-name]
+# Opens a tmux session with multiple windows, one per project
+
+set -e
+
+export NVM_DIR="/home/cyc/.nvm"
+[ -s "/nvm.sh" ] && . "/nvm.sh"
+
+SESSION=workspace
+
+# Kill existing session if any
+tmux kill-session -t "" 2>/dev/null || true
+
+# Scan ~/projects for directories
+PROJECTS_DIR="/home/cyc/projects"
+if [ ! -d "" ]; then
+    echo "No ~/projects directory found. Create project folders there first."
+    exit 1
+fi
+
+DIRS=()
+
+if [ 0 -eq 0 ]; then
+    echo "No project directories found in ~/projects/"
+    echo "Create some with: mkdir ~/projects/my-project"
+    exit 1
+fi
+
+# Create session with first project
+FIRST_DIR=""
+FIRST_NAME=""
+tmux new-session -d -s "" -n "" -c ""
+
+# Add windows for remaining projects
+for ((i=1; i<0; i++)); do
+    DIR=""
+    NAME=""
+    tmux new-window -t "" -n "DESKTOP-MOBKNFS" -c ""
+done
+
+# Select first window
+tmux select-window -t "":1
+
+echo "Created session '' with 0 project windows:"
+for DIR in ""; do
+    echo "  - """
+done
+
+tmux attach -t ""
