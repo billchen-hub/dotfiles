@@ -4,17 +4,17 @@ Personal development environment configuration.
 
 ## Two installation paths
 
-### Company computer (Windows only, no WSL)
+### Company computer (Windows only, no WSL, no git clone)
 
-Only installs git config and .gitattributes for cross-platform line endings.
+1. Open https://github.com/billchen-hub/dotfiles
+2. Click green "Code" button -> "Download ZIP"
+3. Extract the ZIP to any folder
+4. Open CMD or PowerShell, cd into that folder
+5. Run: python install_windows.py
 
-    git clone https://github.com/billchen-hub/dotfiles.git
-    cd dotfiles
-    python install_windows.py
+This only sets up git config and .gitattributes. No WSL or Linux tools needed.
 
 ### Home computer (Windows + WSL)
-
-Full setup: tmux config, Claude Code launcher scripts, git config.
 
     wsl
     git clone https://github.com/billchen-hub/dotfiles.git ~/dotfiles
