@@ -1,20 +1,8 @@
 # Dotfiles - WSL + tmux + Claude Code
 
-Personal development environment configuration.
+Personal development environment configuration for multi-project Claude Code workflow.
 
-## Two installation paths
-
-### Company computer (Windows only, no WSL, no git clone)
-
-1. Open https://github.com/billchen-hub/dotfiles
-2. Click green "Code" button -> "Download ZIP"
-3. Extract the ZIP to any folder
-4. Open CMD or PowerShell, cd into that folder
-5. Run: python install_windows.py
-
-This only sets up git config and .gitattributes. No WSL or Linux tools needed.
-
-### Home computer (Windows + WSL)
+## Setup (WSL only)
 
     wsl
     git clone https://github.com/billchen-hub/dotfiles.git ~/dotfiles
@@ -22,17 +10,14 @@ This only sets up git config and .gitattributes. No WSL or Linux tools needed.
 
 ## Contents
 
-- install_windows.py - Windows-only setup (git config + .gitattributes)
 - install.sh - WSL full setup (tmux + scripts + git config)
 - tmux/.tmux.conf - tmux config (Ctrl+A prefix, mouse, vi copy)
-- git/.gitattributes_global - cross-platform line endings
-- bin/claude-tmux - single project session launcher (WSL only)
-- bin/claude-multi - multi-project workspace launcher (WSL only)
+- git/.gitattributes_global - cross-platform line endings (WSL global fallback)
+- bin/claude-tmux - single project session launcher
+- bin/claude-multi - multi-project workspace launcher
 
-## Cross-Platform Coding Rules
+## Note on .gitattributes
 
-1. Paths: Use pathlib.Path() in Python, path.join() in Node.js
-2. Line endings: Handled automatically by .gitattributes
-3. Automation: Write Python scripts, not .sh or .bat
-4. Env vars: Use .env files with python-dotenv
-5. File permissions: git ignores changes via core.fileMode=false
+When developing in WSL, each project repo should contain a .gitattributes file
+to ensure consistent line endings across platforms. This is only needed for
+repos developed in WSL that will also be used on Windows.
